@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>喵喵魚魚大冒險 · Meow Meow Fish Adventure</title>
+<style>
+*{box-sizing:border-box}body{margin:0;background:#fcf7e8;color:#493a30;font:14px system-ui,sans-serif;display:flex;min-height:100vh;align-items:center;justify-content:center;flex-direction:column}header{width:min(1280px,98vw);display:flex;justify-content:space-between;align-items:center;padding:18px 0;color:#658d83;font-size:12px;letter-spacing:2px}header b{color:#397d77;font-weight:600}main{width:min(1280px,98vw);aspect-ratio:8/5;position:relative;border:1px solid #d6cfb7;box-shadow:0 30px 100px #0008}canvas{width:100%;height:100%;display:block;background:#fcf7e8}#loading{position:absolute;inset:0;display:flex;gap:20px;align-items:center;justify-content:center;flex-direction:column;background:#fcf7e8}progress{accent-color:#397d77;width:240px}footer{max-width:1280px;padding:18px;color:#6e7566;line-height:1.8;text-align:center}button{background:transparent;border:1px solid #29495c;color:#397d77;padding:7px 12px;cursor:pointer}#error{display:none;max-width:90%;color:#ffb7ba;white-space:pre-wrap}a{color:#397d77}
+</style>
+</head>
+<body>
+<header><b>MEOW MEOW FISH ADVENTURE / 喵喵魚魚大冒險</b><button id="full">全螢幕</button></header>
+<main><canvas id="unity-canvas" width="1280" height="800" tabindex="0"></canvas><div id="loading"><span>正在啟動喵喵魚魚大冒險…</span><progress id="progress" max="1" value="0"></progress><div id="error"></div></div></main>
+<footer>WASD／方向鍵移動 · 放開空白鍵抓魚 · 長按空白鍵蓄力 · C 喵喵叫 · P 暫停 · M 音效<br>使用 Unity 製作 · 建議使用電腦瀏覽器遊玩</footer>
+<script>
+var canvas=document.getElementById('unity-canvas');var instance;
+function fail(message){document.getElementById('error').style.display='block';document.getElementById('error').textContent='啟動失敗：'+message+'\n請使用網站網址開啟，勿直接雙擊本機 HTML 檔案。';}
+var script=document.createElement('script');script.src='Build/WebGL.loader.js';script.onerror=function(){fail('無法載入 Unity 遊戲檔案');};
+script.onload=function(){createUnityInstance(canvas,{dataUrl:'Build/WebGL.data.unityweb',frameworkUrl:'Build/WebGL.framework.js.unityweb',codeUrl:'Build/WebGL.wasm.unityweb',streamingAssetsUrl:'StreamingAssets',companyName:'Meow Fish Studio',productName:'Meow Meow Fish Adventure',productVersion:'1.0',showBanner:function(message,type){if(type==='error')fail(message);}},function(p){document.getElementById('progress').value=p;}).then(function(game){instance=game;document.getElementById('loading').style.display='none';canvas.focus();}).catch(fail);};document.body.appendChild(script);
+document.getElementById('full').onclick=function(){if(instance)instance.SetFullscreen(1);};
+window.addEventListener('keydown',function(e){if(['Space','ArrowUp','ArrowDown','ArrowLeft','ArrowRight'].includes(e.code)&&document.activeElement===canvas)e.preventDefault();});
+</script>
+</body></html>
