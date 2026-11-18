@@ -19,7 +19,9 @@ public static class BuildGame
         PlayerSettings.companyName="Student Studio"; PlayerSettings.productName="Starfall Defender";
         PlayerSettings.defaultScreenWidth=1200; PlayerSettings.defaultScreenHeight=800;
         PlayerSettings.runInBackground=false;
-        PlayerSettings.WebGL.compressionFormat=WebGLCompressionFormat.Disabled;
+        PlayerSettings.WebGL.compressionFormat=WebGLCompressionFormat.Gzip;
+        PlayerSettings.WebGL.decompressionFallback=true;
+        PlayerSettings.stripEngineCode=true;
         PlayerSettings.WebGL.dataCaching=true;
         PlayerSettings.WebGL.template="PROJECT:Starfall";
         AssetDatabase.SaveAssets(); Debug.Log("STARFALL: Project ready. Press Play to test.");
