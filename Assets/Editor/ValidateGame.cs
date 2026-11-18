@@ -38,7 +38,7 @@ public static class ValidateGame
             g.Begin();Check((int)Get(g,"total")==0&&(int)Get(g,"hearts")==5,"Restart clears previous run");
             Set(g,"total",25);Call(g,"End",true);Check((bool)Get(g,"victory")&&(int)Get(g,"score")==2500,"Successful finish applies remaining-heart bonus");
             g.Begin();PlayerPrefs.SetInt("MeowFishBest",oldBest);PlayerPrefs.Save();Set(g,"best",oldBest);
-            File.WriteAllText(Path.GetFullPath("../../work/meow-smoke.json"),"{\"passed\":true,\"checks\":12}");
+            File.WriteAllText(Path.GetFullPath("../../work/meow-smoke.json"),"{\"passed\":true,\"checks\":13}");
             Debug.Log("MEOW SMOKE TESTS PASSED");EditorApplication.Exit(0);
         }catch(Exception e){PlayerPrefs.SetInt("MeowFishBest",oldBest);PlayerPrefs.Save();Debug.LogException(e);EditorApplication.Exit(1);}
     }

@@ -15,7 +15,7 @@ public static class BuildGame
         camera.gameObject.AddComponent<AudioListener>();
         new GameObject("Meow Fish Adventure").AddComponent<MeowGame>();
         var importer=AssetImporter.GetAtPath("Assets/Resources/CatAtlas.png") as TextureImporter;
-        if(importer!=null && (!importer.isReadable || importer.mipmapEnabled)) { importer.isReadable=true; importer.mipmapEnabled=false; importer.alphaIsTransparency=true; importer.maxTextureSize=2048; importer.SaveAndReimport(); }
+        if(importer!=null && (!importer.isReadable || importer.mipmapEnabled || importer.textureShape!=TextureImporterShape.Texture2D)) { importer.textureShape=TextureImporterShape.Texture2D; importer.textureType=TextureImporterType.Default; importer.npotScale=TextureImporterNPOTScale.None; importer.textureCompression=TextureImporterCompression.Uncompressed; importer.isReadable=true; importer.mipmapEnabled=false; importer.alphaIsTransparency=true; importer.maxTextureSize=2048; importer.SaveAndReimport(); }
         Directory.CreateDirectory("Assets/Scenes"); EditorSceneManager.SaveScene(scene,ScenePath);
         EditorBuildSettings.scenes=new[]{new EditorBuildSettingsScene(ScenePath,true)};
         PlayerSettings.companyName="Meow Fish Studio"; PlayerSettings.productName="Meow Meow Fish Adventure";
