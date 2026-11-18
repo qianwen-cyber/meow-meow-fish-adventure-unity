@@ -1,0 +1,15 @@
+{
+  "unity_version": "6000.6.9f1",
+  "core_checks_passed": 13,
+  "webgl_build": "passed",
+  "browser_checks": [
+    "main menu rendered",
+    "Traditional Chinese displayed",
+    "kitten atlas rendered",
+    "keyboard movement",
+    "charged fish capture",
+    "fish score 3 fish / 300 points",
+    "pause"
+  ],
+  "date": "2026-11-18"
+}

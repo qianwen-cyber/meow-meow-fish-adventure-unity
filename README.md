@@ -1,54 +1,63 @@
-# 星雲防線 · Starfall Defender
+# 喵喵魚魚大冒險 · Meow Meow Fish Adventure
 
-以 Unity 與 C# 開發的單人縱向射擊遊戲，參考課堂範例《Cloud Raiders》的縱向射擊、護盾、武器升級與頭目戰玩法，改為太空防衛主題。美術由 Unity 即時繪製，音效以程式合成，不需下載付費素材。
+[線上遊玩](https://qianwen-cyber.github.io/meow-meow-fish-adventure-unity/) · [GitHub 專案](https://github.com/qianwen-cyber/meow-meow-fish-adventure-unity)
 
-## 遊戲目標
+以 Unity 2D 與 C# 實作的單人休閒收集遊戲。依照遊戲企劃書，期末版本完成第一關「漁港碼頭」。參考《雲端奇兵：星辰脈衝》的縱向捲動、道具收集與能力升級概念，改編成小橘貓的漁港美食冒險。
 
-駕駛戰機守住最後的星域。擊落來襲敵機並收集升級核心，於 85 秒後迎戰無畏艦；擊敗頭目即完成任務，裝甲歸零則任務失敗。
+## 本次完成範圍
 
-- 三種敵機：直進巡邏機、左右蛇行攔截機、三向射擊重裝機。
-- 三級武器：單發、雙發、三向擴散，自動射擊。
-- 護盾：受擊後 4 秒未再受擊，開始自動回復。
-- EMP：初始 3 次，清除敵彈與一般敵機，對頭目造成傷害。
-- 蓄力砲：能量滿 100% 後按 X，發射五道強力脈衝。
-- 道具：金色 W 升級武器；青色 + 修復裝甲與護盾，補充 EMP。
-- 頭目：扇形彈幕、橫向移動、半血加速攻擊。
-- 分數與最高分保存在瀏覽器本機。
-- 開始、暫停、勝利、失敗與重新挑戰畫面。
+- 第一關漁港碼頭，90 秒縱向捲動旅程。
+- WASD／方向鍵移動；空白鍵放開時抓取附近魚群，長按可蓄力擴大範圍。
+- 紅魚提升速度、藍魚擴大抓魚範圍、黃魚增加得分，每 3 條同色魚升一級，最多 3 級。
+- 五顆愛心、木箱阻擋、海鷗干擾，受傷後短暫無敵。
+- C 鍵「喵喵叫」嚇跑附近海鷗，冷卻 8 秒。
+- 在旅程結束時收集至少 25 條魚且仍有愛心，即可抵達魚魚派對。
+- 主選單、操作教學、暫停、通關／失敗結算、重新挑戰、本機最高分。
+- 小橘貓待機、走路、吃魚、受驚表情，收集粒子、音效及輕快背景音樂。
+- 繁體中文介面、WebGL 載入進度及全螢幕。
+
+第二關魚市場、第三關巨大海鷗與雙人模式依企劃保留為未來擴充，未列入本次完成內容。
 
 ## 操作
 
 | 按鍵 | 功能 |
 | --- | --- |
-| WASD / 方向鍵 | 移動 |
-| 按住滑鼠左鍵並拖曳 | 移動 |
-| Shift | 低速精準移動 |
-| Space | EMP 清場 |
-| X | 滿蓄力時發射脈衝 |
-| P / Esc | 暫停 / 繼續 |
-| M | 音效開關 |
-| Enter | 開始 / 重新挑戰 |
+| WASD／方向鍵 | 控制小橘貓移動 |
+| Space | 放開按鍵時抓取附近魚群 |
+| 長按 Space | 蓄力擴大抓魚範圍，再放開抓魚 |
+| C | 使用喵喵叫 |
+| P／Esc | 暫停或繼續 |
+| M | 音效與音樂開關 |
+| Enter | 開始或重新挑戰 |
 
-## Unity 開啟與建置
+## Unity 開啟與輸出
 
-1. 安裝 Unity 6000.6.9f1，勾選 **Web Build Support**（WebGL）。
-2. 在 Unity Hub 選擇 Add，指定本專案根目錄（含 Assets、Packages、ProjectSettings）。
-3. 選單 **Starfall → 1. Prepare Game** 會建立正式場景、相機並設定發佈參數。
-4. 按 Play 試玩。
-5. 選單 **Starfall → 2. Build WebGL** 輸出至 `Build/WebGL`。
-6. 發佈時需上傳整個 WebGL 資料夾，包括 `index.html`、`Build` 和 `.nojekyll`。
+1. 在 Unity Hub 加入此資料夾，安裝 Unity 6000.6.9f1與 WebGL Build Support。
+2. 選單 **Meow Adventure → 1. Prepare Game** 建立場景並套用輸出設定。
+3. 開啟 `Assets/Scenes/Main.unity`，按 Play 試玩。
+4. 選單 **Meow Adventure → 2. Build WebGL**，輸出位於 `Build/WebGL`。
+5. 將整個 WebGL 輸出放至 GitHub 儲存庫的 `docs` 資料夾。
+6. GitHub Settings → Pages，選擇 main 分支的 `/docs` 資料夾發佈。
 
-WebGL 使用不壓縮輸出，避免 GitHub Pages 無法自訂壓縮標頭的相容性問題。請透過 HTTP / HTTPS 網址開啟，勿直接雙擊 index.html。
+網頁版使用 Gzip 與 Decompression Fallback，適合 GitHub Pages。請透過 HTTP／HTTPS 網址開啟，不能直接雙擊本機 HTML 檔。
 
-## 程式結構
+## 檔案結構
 
-- `Assets/Scripts/StarfallGame.cs`：遊戲狀態、角色移動、子彈、敵機、頭目、碰撞、繪圖、音效與介面。
-- `Assets/Editor/BuildGame.cs`：場景建立與 WebGL 建置。
-- `Assets/Scenes/Main.unity`：進入遊戲場景。
-- `Assets/WebGLTemplates/Starfall/index.html`：載入進度、全螢幕與中文網頁操作說明。
+- `Assets/Scripts/MeowGame.cs`：角色、抓魚、魚種升級、障礙碰撞、音效、遊戲流程與介面。
+- `Assets/Resources/CatAtlas.png`：橘貓四個動作表情，於 Unity 分割為 Sprite。
+- `Assets/Resources/NotoSansTC.otf`：開源繁體中文字型子集。
+- `Assets/Editor/BuildGame.cs`：場景準備與 WebGL 建置。
+- `Assets/Editor/ValidateGame.cs`：遊戲狀態與核心玩法驗證。
+- `Assets/WebGLTemplates/Meow/index.html`：中文網頁外框與載入畫面。
 
-## 參考與素材
+## 素材與參考
 
-- 課堂參考：https://zycayang.github.io/CloudRaiders/
-- Unity 內建字型 LegacyRuntime。
-- 幾何圖形、星空、粒子與音效均由本專案程式產生，未複製範例遊戲程式或圖像。
+- 課堂參考遊戲：https://zycayang.github.io/CloudRaiders/
+- 橘貓圖像：使用 OpenAI 圖像工具為本專案生成。
+- 魚、木箱、海鷗、碼頭、海浪與特效：由 Unity 程式繪製。
+- 音效與背景音樂：由本專案程式合成。
+- 字型：Noto Sans CJK TC，SIL Open Font License 1.1，授權檔附於 `Assets/Resources/NotoFontLicense.txt`。子集僅包含遊戲所需字元。
+
+## 驗證紀錄
+
+2026-11-18：Unity 6000.6.9f1 編譯成功，13 項核心玩法檢查通過，WebGL 建置成功。已在瀏覽器實際驗證中文字型、角色、鍵盤移動、蓄力抓魚、得分與暫停，並經使用者確認畫面與玩法。
