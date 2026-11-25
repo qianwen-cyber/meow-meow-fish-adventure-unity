@@ -1,0 +1,16 @@
+{
+  "release": "v2-difficulty-shift-20261125",
+  "engine": "Unity 6000.6.9f1 WebGL",
+  "levels": 11,
+  "fish_to_complete": 455,
+  "initial_speed_multiplier": 1.25,
+  "final_speed_multiplier": 3.75,
+  "unity_checks": 173,
+  "source_sha256": "bd10924902ec62e5615d878d487097eea616c68b02ea86aba57758f09cb084c3",
+  "build_sha256": {
+    "WebGL.wasm.unityweb": "1591b01c4500fbabaadafe775cdf579575face09dc02757b93688fabd513e5a5",
+    "WebGL.data.unityweb": "d9131784cd5e5f64709804cb3b246c7981bc6ccabe9b367956f98339a9bd7800",
+    "WebGL.framework.js.unityweb": "23ced0058a410e8e267ea5d8f744ddb03820b2121e5135b080b4edff91480057",
+    "WebGL.loader.js": "fff30b720aaeb4b783778e5f4a300cf5e9c74736608b6b290092100a20062afd"
+  }
+}
